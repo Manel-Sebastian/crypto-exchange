@@ -227,9 +227,6 @@ docker compose down
 docker compose down -v
 ```
 
-## 📝 Decisiones de diseño
-
-Las justificaciones detalladas de todas las decisiones de diseño (topics Kafka, particionado HDFS, ventanas Spark, métricas Prometheus) están documentadas en `memoria.pdf`.
 
 ## ⚠️ Requisitos técnicos
 
