@@ -1,0 +1,75 @@
+{
+  "title": "Negocio - Crypto Exchange",
+  "uid": "negocio-001",
+  "timezone": "browser",
+  "refresh": "5s",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Precio BTC/USDT en vivo ($)",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "targets": [
+        {
+          "expr": "crypto_precio_actual{par=\"BTCUSDT\"}",
+          "legendFormat": "BTC/USDT",
+          "datasource": "Prometheus"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Precio ETH/USDT en vivo ($)",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "targets": [
+        {
+          "expr": "crypto_precio_actual{par=\"ETHUSDT\"}",
+          "legendFormat": "ETH/USDT",
+          "datasource": "Prometheus"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Variación 24h (%)",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+      "targets": [
+        {
+          "expr": "crypto_variacion_24h_pct",
+          "legendFormat": "{{par}}",
+          "datasource": "Prometheus"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Mensajes publicados en Kafka",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+      "targets": [
+        {
+          "expr": "rate(pipeline_mensajes_publicados_total[1m])",
+          "legendFormat": "{{topic}}",
+          "datasource": "Prometheus"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Volumen 24h",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 16},
+      "targets": [
+        {
+          "expr": "crypto_volumen_24h",
+          "legendFormat": "{{par}}",
+          "datasource": "Prometheus"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 36,
+  "version": 1
+}

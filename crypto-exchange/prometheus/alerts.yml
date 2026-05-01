@@ -1,0 +1,33 @@
+groups:
+  - name: crypto-alerts
+    rules:
+
+      # Alerta 1: Precio de BTC cae más de un 3%
+      - alert: BTCDumpDetectado
+        expr: crypto_variacion_24h_pct{par="BTCUSDT"} < -3
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "💥 DUMP detectado en BTC"
+          description: "BTC ha caído más de un 3% en las últimas 24h"
+
+      # Alerta 2: Precio de BTC sube más de un 3%
+      - alert: BTCPumpDetectado
+        expr: crypto_variacion_24h_pct{par="BTCUSDT"} > 3
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "🚀 PUMP detectado en BTC"
+          description: "BTC ha subido más de un 3% en las últimas 24h"
+
+      # Alerta 3: Productor caído (no hay métricas)
+      - alert: ProductorCaido
+        expr: up{job="crypto-producer"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "🔴 Productor Binance caído"
+          description: "El productor no responde desde hace más de 30 segundos"
